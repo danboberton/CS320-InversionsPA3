@@ -3,7 +3,7 @@ import math
 from countinv import count_inversions
 from sys import argv
 
-RND_SIZE = 4
+RND_SIZE = 1000
 
 result = list(reversed(range(1, RND_SIZE + 1)))
 
