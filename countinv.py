@@ -12,6 +12,7 @@ def read_array(filename):
     except:
         exit("Couldn’t read numbers from file \""+filename+"\"")
 
+# https://www.cs.colostate.edu/~cs320/Fall22/more_resources/slides/08_inv.pdf
 
 # implement
 #
@@ -21,16 +22,16 @@ def read_array(filename):
 # Return value: number of inversions
 def count_inversions(in_list):
     listLen = len(in_list)
-    if listLen > 2:
+    if listLen > 1:
         # Might not be even number
         half = int(listLen / 2)
         split1 = in_list[0:half]
         split2 = in_list[half:listLen]
         resultL = count_inversions(split1)
         resultR = count_inversions(split2)
-        result = merge_i(split1, split2, in_list)
+        result = merge_i(split1, split2, in_list) + resultL + resultR
     else:
-        result = bubbleWithCount(in_list)
+        return 0
 
     return result
 
@@ -47,11 +48,11 @@ def merge_i(l_list, r_list, in_list):
     result = 0
     in_list.clear()
     while len(l_list) !=0 and len(r_list) !=0:
-        if l_list[0] < r_list[0]:
+        if l_list[0] > r_list[0]:
             result += len(l_list)
-            in_list.append(r_list.pop())
+            in_list.append(r_list.pop(0))
         else:
-            in_list.append(l_list.pop())
+            in_list.append(l_list.pop(0))
 
         if len(l_list) == 0:
             in_list.extend(r_list)
