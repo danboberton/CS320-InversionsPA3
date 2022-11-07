@@ -27,14 +27,8 @@ def count_inversions(in_list):
         split1 = in_list[0:half]
         split2 = in_list[half:listLen]
         result = merge_i(split1, split2, in_list)
-    elif (listLen == 1):
-        return 0
-    elif listLen == 2:
-        if in_list[0] > in_list[1]:
-            temp = in_list[0]
-            in_list[0] = in_list[1]
-            in_list[1] = temp
-            return 1
+    else:
+        result = bubbleWithCount(in_list)
 
     return result
 
@@ -50,8 +44,6 @@ def count_inversions(in_list):
 def merge_i(l_list, r_list, in_list):
     result = count_inversions(l_list) + count_inversions(r_list)
     in_list.clear()
-
-
     in_list.extend(l_list)
     in_list.extend(r_list)
     result += bubbleWithCount(in_list)
