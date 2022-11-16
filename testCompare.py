@@ -3,7 +3,7 @@ import math
 from countinv import count_inversions as myinversions
 from otherTest import count_inversions as otherinversions
 
-RND_SIZE = 100
+RND_SIZE = 6
 
 result = list(reversed(range(1, RND_SIZE + 1)))
 

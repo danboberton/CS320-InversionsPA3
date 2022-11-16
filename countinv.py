@@ -44,6 +44,8 @@ def count_inversions(in_list):
 # values--replace those with the merged values.
 #
 # Return value: inversion count
+#
+
 def merge_i(l_list, r_list, in_list):
     result = 0
     in_list.clear()
