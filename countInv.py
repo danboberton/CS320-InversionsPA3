@@ -1,5 +1,6 @@
 from sys import argv, exit
 
+
 # provided
 #
 # Read integers from the given filename.
@@ -10,7 +11,8 @@ def read_array(filename):
         with open(filename) as f:
             return [int(n) for n in f.read().split()]
     except:
-        exit("Couldn’t read numbers from file \""+filename+"\"")
+        exit("Couldn’t read numbers from file \"" + filename + "\"")
+
 
 # https://www.cs.colostate.edu/~cs320/Fall22/more_resources/slides/08_inv.pdf
 
@@ -36,8 +38,6 @@ def count_inversions(in_list):
     return result
 
 
-
-
 # implement
 #
 # Merge the left & right lists into in_list.  in_list already contains
@@ -49,7 +49,7 @@ def count_inversions(in_list):
 def merge_i(l_list, r_list, in_list):
     result = 0
     in_list.clear()
-    while len(l_list) !=0 and len(r_list) !=0:
+    while len(l_list) != 0 and len(r_list) != 0:
         if l_list[0] > r_list[0]:
             result += len(l_list)
             in_list.append(r_list.pop(0))
@@ -65,13 +65,14 @@ def merge_i(l_list, r_list, in_list):
 
     return result
 
+
 def bubbleWithCount(in_list):
     swaps = 0
     lenList = len(in_list)
     for i in range(lenList - 1):
-        for j in range( lenList - i - 1):
-            if in_list[j] > in_list[j+1]:
-                in_list[j], in_list[j+1] = in_list[j+1], in_list[j]
+        for j in range(lenList - i - 1):
+            if in_list[j] > in_list[j + 1]:
+                in_list[j], in_list[j + 1] = in_list[j + 1], in_list[j]
                 swaps += 1
 
         if swaps == 0:
@@ -83,7 +84,7 @@ def bubbleWithCount(in_list):
 # provided
 if __name__ == '__main__':
     if len(argv) != 2:
-        exit("usage: python3 "+argv[0]+" datafile")
+        exit("usage: python3 " + argv[0] + " datafile")
     in_list = read_array(argv[1])
     print(count_inversions(in_list))
     # Added
